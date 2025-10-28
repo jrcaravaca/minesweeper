@@ -1,13 +1,39 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" class="h-full">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/mine-icon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MineSweeper</title>
   </head>
-  <body>
-    
+  <body class=" bg-gray-700 h-full flex flex-col">
+    <div class="page m-4 text-white">
+
+      <header class="text-6xl text-center mb-4">
+        <h1>MineSweeper</h1>
+      </header>
+
+      <main class="flex flex-col items-center justify-center">
+        <form action="#" class"">
+          <label for="board-size">Tamaño del tablero</label>
+          <select name="board-size" id="board-size" class="bg-gray-700">
+            <option value="-">-</option>
+            <option value="8">8x8</option>
+            <option value="16">16x16</option>
+            <option value="32">32x32</option>
+          </select>
+          <button class="cursor-pointer bg-gray-800 text-white px-2 py-1 rounded ml-2">Generar</button>
+        </form>
+        <section id="container" class="mt-6">
+          <div id="board" class="grid gap-o.5 w-[600px] h-[600px] bg-gray-800 grid-cols-8">
+              
+          </div>
+        </section>
+      </main>
+      <footer class="fixed bottom-0 left-0 w-full text-center text-white py-4">
+        <p>Coded before sunrise, powered by coffe, by @jrcaravaca</p>
+      </footer>
+    </div>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
