@@ -6,8 +6,7 @@ export class Board {
         this.size = size; 
         this.cells = []; 
         this.element = document.getElementById('board'); 
-        this.totalMines = 0; 
-        this.maxMines = 10; 
+        this.maxMines = (this.size * this.size) * 0.15; 
     }
 
     generar(){
@@ -17,7 +16,7 @@ export class Board {
             const cell = new Cell(); 
             cell.element.classList.add('cell'); 
             this.cells.push(cell)
-            this.element.appendChild(cell); 
+            this.element.appendChild(cell.element); 
         }
         
         let cellIndex = [];
@@ -30,6 +29,7 @@ export class Board {
             let index = cellIndex[i]; 
             this.cells[index].setMine()
         }; 
+        this.#calculateAdjacentMines(); 
     }; 
 
     #configurarGrid() {
@@ -42,5 +42,29 @@ export class Board {
         } else {
             this.element.classList.add(`grid-cols-${this.size}`)
         }; 
+    }
+
+    #calculateAdjacentMines(){
+        this.cells.forEach(cell => {
+            cell.adjacentMines = 0; 
+            let index = this.cells.indexOf(cell); 
+            let filaRelativa = [-1,-1,-1,0,0,1,1,1]; 
+            let colRelativa = [-1,0,1,-1,1,-1,0,1]; 
+            let fila = Math.floor(index / this.size); 
+            let col = index % this.size
+
+            for (let i = 0; i < 8; i++) {
+                let filaVecina = fila + filaRelativa[i]; 
+                let colVecina = col + colRelativa[i]; 
+
+                if (filaVecina >= 0 && filaVecina < this.size && colVecina >= 0 && colVecina < this.size) {
+                    const indexVecina = filaVecina * this.size + colVecina; 
+                    if (this.cells[indexVecina].hasMine) {
+                        cell.adjacentMines += 1; 
+                    }
+                }
+
+            }
+        });
     }
 }; 
