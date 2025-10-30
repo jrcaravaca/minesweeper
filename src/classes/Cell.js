@@ -16,6 +16,7 @@ export class Cell {
 
     reveal(){
         this.element.classList.add("revealed");
+        this.isRevealed = true;
         if (this.adjacentMines > 0 && !this.hasMine) {
             this.element.innerText = `${this.adjacentMines}`
         }

@@ -17,6 +17,7 @@ button.addEventListener('click', e => {
         // Evento click izquierdo
         cell.element.addEventListener('click', () => {
             if (board.isGameOver) return; 
+            if (cell.hasFlag) return;
 
             if (cell.hasMine) {
                 board.revealAllMines(); 
@@ -32,6 +33,7 @@ button.addEventListener('click', e => {
         //Evento click derecho
         cell.element.addEventListener('contextmenu', (e) => {
             e.preventDefault()
+            if (cell.isRevealed) return; 
             cell.toggleFlag()
         })
 
