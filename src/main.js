@@ -14,6 +14,7 @@ button.addEventListener('click', e => {
     board.generar()
     
     board.cells.forEach(cell => {
+        // Evento click izquierdo
         cell.element.addEventListener('click', () => {
             if (board.isGameOver) return; 
 
@@ -27,6 +28,12 @@ button.addEventListener('click', e => {
                 cell.reveal(); 
             }
         }); 
+
+        //Evento click derecho
+        cell.element.addEventListener('contextmenu', (e) => {
+            e.preventDefault()
+            cell.toggleFlag()
+        })
 
     })
 })
