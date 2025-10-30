@@ -7,6 +7,7 @@ export class Board {
         this.cells = []; 
         this.element = document.getElementById('board'); 
         this.maxMines = (this.size * this.size) * 0.15; 
+        this.isGameOver = false; 
     }
 
     generar(){
@@ -32,6 +33,14 @@ export class Board {
         }; 
         this.#calculateAdjacentMines(); 
     }; 
+
+    revealAllMines() {
+        this.cells.forEach(cell => {
+            if (cell.hasMine) {
+                cell.reveal(); 
+            }
+        })
+    }
 
     #configurarGrid() {
         if (this.element.classList.contains('grid-cols-8')) {

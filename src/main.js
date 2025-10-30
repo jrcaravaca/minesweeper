@@ -15,7 +15,17 @@ button.addEventListener('click', e => {
     
     board.cells.forEach(cell => {
         cell.element.addEventListener('click', () => {
-            cell.reveal(); 
+            if (board.isGameOver) return; 
+
+            if (cell.hasMine) {
+                board.revealAllMines(); 
+                setTimeout(() => {
+                    alert("¡Has perdido!")
+                }, 500)
+                board.isGameOver = true; 
+            } else {
+                cell.reveal(); 
+            }
         }); 
 
     })
