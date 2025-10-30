@@ -25,6 +25,8 @@ button.addEventListener('click', e => {
                     alert("¡Has perdido!")
                 }, 500)
                 board.isGameOver = true; 
+            } else if (cell.adjacentMines === 0) {
+                board.revealEmptyNeighbors(cell)
             } else {
                 cell.reveal(); 
             }

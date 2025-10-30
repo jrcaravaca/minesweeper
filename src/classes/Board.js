@@ -8,6 +8,8 @@ export class Board {
         this.element = document.getElementById('board'); 
         this.maxMines = (this.size * this.size) * 0.15; 
         this.isGameOver = false; 
+        this.filaRelativa = [-1,-1,-1,0,0,1,1,1];
+        this.colRelativa = [-1,0,1,-1,1,-1,0,1]; 
     }
 
     generar(){
@@ -58,14 +60,12 @@ export class Board {
         this.cells.forEach(cell => {
             cell.adjacentMines = 0; 
             let index = this.cells.indexOf(cell); 
-            let filaRelativa = [-1,-1,-1,0,0,1,1,1]; 
-            let colRelativa = [-1,0,1,-1,1,-1,0,1]; 
             let fila = Math.floor(index / this.size); 
             let col = index % this.size
 
             for (let i = 0; i < 8; i++) {
-                let filaVecina = fila + filaRelativa[i]; 
-                let colVecina = col + colRelativa[i]; 
+                let filaVecina = fila + this.filaRelativa[i]; 
+                let colVecina = col + this.colRelativa[i]; 
 
                 if (filaVecina >= 0 && filaVecina < this.size && colVecina >= 0 && colVecina < this.size) {
                     const indexVecina = filaVecina * this.size + colVecina; 
@@ -76,5 +76,26 @@ export class Board {
 
             }
         });
+    }
+
+    revealEmptyNeighbors(cell) {
+        let index = this.cells.indexOf(cell); 
+        let fila = Math.floor(index / this.size); 
+        let col = index % this.size
+
+        for (let i = 0; i < 8; i++) {
+            let filaVecina = fila + this.filaRelativa[i]; 
+            let colVecina = col + this.colRelativa[i]; 
+
+            if (filaVecina >= 0 && filaVecina < this.size && colVecina >= 0 && colVecina < this.size) {
+                const indexVecina = filaVecina * this.size + colVecina; 
+                if (!this.cells[indexVecina].isRevealed) {
+                    this.cells[indexVecina].reveal(); 
+                    if (this.cells[indexVecina].adjacentMines === 0) {
+                        this.revealEmptyNeighbors(this.cells[indexVecina]); 
+                    }
+                } 
+            }
+        }
     }
 }; 
