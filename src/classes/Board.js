@@ -28,6 +28,7 @@ export class Board {
         for (let i = 0; i < this.maxMines; i++) {
             let index = cellIndex[i]; 
             this.cells[index].setMine()
+            this.cells[index].hasMine = true; 
         }; 
         this.#calculateAdjacentMines(); 
     }; 

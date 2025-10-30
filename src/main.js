@@ -15,8 +15,9 @@ button.addEventListener('click', e => {
     
     board.cells.forEach(cell => {
         cell.element.addEventListener('click', () => {
-            console.log(cell.adjacentMines) // esto es un testeo para ver cuantas minas adjacentes hay
+            cell.reveal(); 
         }); 
+
     })
 })
 
