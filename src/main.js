@@ -1,9 +1,11 @@
 import './style.css'
 import { Board } from './classes/Board';
+import { Timer } from './classes/Timer';
 
 const button = document.querySelector('button'); 
 const select = document.getElementById('board-size'); 
-const tableBoard = document.getElementById('board')
+const time = document.getElementById('time'); 
+const timer = new Timer(time); 
 
 
 
@@ -12,6 +14,8 @@ button.addEventListener('click', e => {
     e.preventDefault(); 
     const board = new Board(size);
     board.generar()
+    timer.start(); 
+    
     
     board.cells.forEach(cell => {
         // Evento click izquierdo
@@ -22,7 +26,8 @@ button.addEventListener('click', e => {
             if (cell.hasMine) {
                 board.revealAllMines(); 
                 setTimeout(() => {
-                    alert("¡Has perdido!")
+                    alert("¡Has perdido!");
+                    timer.pause();
                 }, 500)
                 board.isGameOver = true; 
             } else if (cell.adjacentMines === 0) {
