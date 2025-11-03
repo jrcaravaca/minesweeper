@@ -10,6 +10,8 @@ export class Board {
         this.isGameOver = false; 
         this.filaRelativa = [-1,-1,-1,0,0,1,1,1];
         this.colRelativa = [-1,0,1,-1,1,-1,0,1]; 
+        this.safeCells = (this.size * this.size) - this.maxMines; 
+        this.revealedCount = 0; 
     }
 
     generar(){
@@ -91,11 +93,21 @@ export class Board {
                 const indexVecina = filaVecina * this.size + colVecina; 
                 if (!this.cells[indexVecina].isRevealed) {
                     this.cells[indexVecina].reveal(); 
+                    if (this.cells[indexVecina].reveal()) {
+                        this.revealedCount += 1; 
+                        this.checkWin()
+                    }
                     if (this.cells[indexVecina].adjacentMines === 0) {
                         this.revealEmptyNeighbors(this.cells[indexVecina]); 
                     }
                 } 
             }
+        }
+    }
+
+    checkWin() {
+        if (this.revealedCount === this.safeCells) {
+            alert('Winner'); 
         }
     }
 }; 

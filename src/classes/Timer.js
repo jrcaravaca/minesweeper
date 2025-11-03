@@ -12,7 +12,7 @@ export class Timer {
         if (this.seconds === 60) {
             this.mins +=1; 
             this.seconds = 0; 
-            if (mins === 60) {
+            if (this.mins === 60) {
                 this.hours += 1; 
                 this.mins = 0; 
                 this.seconds = 0; 

@@ -15,11 +15,13 @@ export class Cell {
     }
 
     reveal(){
+        if (this.isRevealed) return false;
         this.element.classList.add("revealed");
         this.isRevealed = true;
         if (this.adjacentMines > 0 && !this.hasMine) {
             this.element.innerText = `${this.adjacentMines}`
         }
+        return !this.hasMine
     }
 
     toggleFlag() {
