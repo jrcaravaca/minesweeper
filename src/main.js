@@ -1,13 +1,14 @@
 import './style.css'
 import { Board } from './classes/Board';
 import { Timer } from './classes/Timer';
+import { popup } from './ui/popup';
 
 const button = document.querySelector('button'); 
 const select = document.getElementById('board-size'); 
 const time = document.getElementById('time'); 
 const timer = new Timer(time); 
 
-
+popup(time.value)
 
 button.addEventListener('click', e => {
     let size = select.value; 
