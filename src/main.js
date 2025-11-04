@@ -20,6 +20,7 @@ button.addEventListener('click', e => {
     board.cells.forEach(cell => {
         // Evento click izquierdo
         cell.element.addEventListener('click', () => {
+            console.log('click en celda', cell)
             if (board.isGameOver) return; 
             if (cell.hasFlag) return;
 
@@ -31,6 +32,10 @@ button.addEventListener('click', e => {
                 }, 500); 
                 board.isGameOver = true; 
             } else if (cell.adjacentMines === 0) {
+                if (cell.reveal()) {
+                    board.revealedCount +=1; 
+                    board.checkWin()
+                }
                 board.revealEmptyNeighbors(cell)
             } else {
                 if (cell.reveal()) {
