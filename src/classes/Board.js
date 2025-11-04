@@ -107,6 +107,7 @@ export class Board {
     checkWin() {
         if (this.revealedCount === this.safeCells) {
             alert('Winner'); 
+            this.isGameOver = true; 
         }
     }
 }; 

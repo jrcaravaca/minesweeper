@@ -37,12 +37,17 @@ button.addEventListener('click', e => {
                     board.checkWin()
                 }
                 board.revealEmptyNeighbors(cell)
+                if (board.isGameOver) {
+                    timer.pause()
+                }
             } else {
                 if (cell.reveal()) {
                     board.revealedCount += 1
                     board.checkWin(); 
                 }
-                
+                if (board.isGameOver) {
+                    timer.pause()
+                }
             }
         }); 
 
