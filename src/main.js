@@ -19,7 +19,6 @@ button.addEventListener('click', e => {
     
     board.cells.forEach(cell => {
         // Evento click izquierdo
-        /// TENGO QUE CORREGIR ESTO TRABAJO PARA MAÑANA
         cell.element.addEventListener('click', () => {
             if (board.isGameOver) return; 
             if (cell.hasFlag) return;
@@ -34,7 +33,6 @@ button.addEventListener('click', e => {
             } else if (cell.adjacentMines === 0) {
                 board.revealEmptyNeighbors(cell)
             } else {
-                cell.reveal(); 
                 if (cell.reveal()) {
                     board.revealedCount += 1
                     board.checkWin(); 

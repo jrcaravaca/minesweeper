@@ -6,7 +6,7 @@ export class Board {
         this.size = size; 
         this.cells = []; 
         this.element = document.getElementById('board'); 
-        this.maxMines = (this.size * this.size) * 0.15; 
+        this.maxMines = Math.round((this.size * this.size) * 0.15); 
         this.isGameOver = false; 
         this.filaRelativa = [-1,-1,-1,0,0,1,1,1];
         this.colRelativa = [-1,0,1,-1,1,-1,0,1]; 
@@ -92,7 +92,6 @@ export class Board {
             if (filaVecina >= 0 && filaVecina < this.size && colVecina >= 0 && colVecina < this.size) {
                 const indexVecina = filaVecina * this.size + colVecina; 
                 if (!this.cells[indexVecina].isRevealed) {
-                    this.cells[indexVecina].reveal(); 
                     if (this.cells[indexVecina].reveal()) {
                         this.revealedCount += 1; 
                         this.checkWin()
