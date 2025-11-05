@@ -1,4 +1,4 @@
-export function popup(tiempo, winner = false) {
+export function popup(tiempo, winner = false, size) {
     const main = document.querySelector('main'); 
     const popup = document.createElement('div'); 
     popup.classList.add('popup','absolute', 'bg-gray-800','flex', 'flex-col', 'items-center', 'justify-center', 'rounded', 'w-[250]', 'h-[250', 'gap-2','p-3'); 
@@ -13,6 +13,9 @@ export function popup(tiempo, winner = false) {
     const popupText = document.createElement('p'); 
     popupText.innerText = `Tiempo de Juego: ${tiempo}`; 
 
+    const bestTime = document.createElement('p'); 
+    bestTime.innerText = `Mejor tiempo: ${localStorage.getItem(size)}`
+
     const restartButton = document.createElement('button');
     restartButton.classList.add('rounded-ml-2', 'bg-gray-700','rounded', 'p-1')
     restartButton.innerText = 'Reiniciar'; 
@@ -23,6 +26,7 @@ export function popup(tiempo, winner = false) {
     }) 
     popup.appendChild(popuptitle)
     popup.appendChild(popupText)
+    popup.appendChild(bestTime)
     popup.appendChild(restartButton)
     main.appendChild(popup)
 }

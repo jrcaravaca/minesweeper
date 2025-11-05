@@ -2,6 +2,7 @@ import './style.css'
 import { Board } from './classes/Board';
 import { Timer } from './classes/Timer';
 import { popup } from './ui/popup';
+import { bestTime } from './utils/timeScore';
 
 const button = document.querySelector('button'); 
 const select = document.getElementById('board-size'); 
@@ -36,21 +37,24 @@ button.addEventListener('click', e => {
                 if (cell.reveal()) {
                     board.revealedCount +=1; 
                     if (board.checkWin()) {
-                        popup(time.innerText, true)
+                        popup(time.innerText, true, size)
                         timer.pause()
+                        bestTime(size, time.innerText)
                     }
                 }
                 board.revealEmptyNeighbors(cell)
                 if (board.checkWin()) {
-                    popup(time.innerText); 
+                    popup(time.innerText, true, size); 
                     timer.pause()
+                    bestTime(size, time.innerText)
                 }
             } else {
                 if (cell.reveal()) {
                     board.revealedCount += 1
                     if (board.checkWin()) {
-                        popup(time.innerText, true)
+                        popup(time.innerText, true, size)
                         timer.pause()
+                        bestTime(size, time.innerText)
                     }
                 }
                 
