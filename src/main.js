@@ -8,7 +8,7 @@ const select = document.getElementById('board-size');
 const time = document.getElementById('time'); 
 const timer = new Timer(time); 
 
-popup(time.value)
+
 
 button.addEventListener('click', e => {
     let size = select.value; 
@@ -21,34 +21,39 @@ button.addEventListener('click', e => {
     board.cells.forEach(cell => {
         // Evento click izquierdo
         cell.element.addEventListener('click', () => {
-            console.log('click en celda', cell)
+            
             if (board.isGameOver) return; 
             if (cell.hasFlag) return;
 
             if (cell.hasMine) {
                 board.revealAllMines(); 
                 setTimeout(() => {
-                    alert("¡Has perdido!");
+                    popup(time.innerText)
                     timer.pause();
                 }, 500); 
                 board.isGameOver = true; 
             } else if (cell.adjacentMines === 0) {
                 if (cell.reveal()) {
                     board.revealedCount +=1; 
-                    board.checkWin()
+                    if (board.checkWin()) {
+                        popup(time.innerText, true)
+                        timer.pause()
+                    }
                 }
                 board.revealEmptyNeighbors(cell)
-                if (board.isGameOver) {
+                if (board.checkWin()) {
+                    popup(time.innerText); 
                     timer.pause()
                 }
             } else {
                 if (cell.reveal()) {
                     board.revealedCount += 1
-                    board.checkWin(); 
+                    if (board.checkWin()) {
+                        popup(time.innerText, true)
+                        timer.pause()
+                    }
                 }
-                if (board.isGameOver) {
-                    timer.pause()
-                }
+                
             }
         }); 
 

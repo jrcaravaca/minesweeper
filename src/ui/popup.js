@@ -1,9 +1,15 @@
-export function popup(tiempo) {
+export function popup(tiempo, winner = false) {
     const main = document.querySelector('main'); 
     const popup = document.createElement('div'); 
     popup.classList.add('popup','absolute', 'bg-gray-800','flex', 'flex-col', 'items-center', 'justify-center', 'rounded', 'w-[250]', 'h-[250', 'gap-2','p-3'); 
     const popuptitle = document.createElement('h2'); 
-    popuptitle.innerText = '!Has ganado!'; 
+    popuptitle.classList.add('text-3xl')
+    if (winner) {
+        popuptitle.innerText = '¡Has ganado!'; 
+    } else {
+        popuptitle.innerText = '¡Has perdido!';
+    }
+    
     const popupText = document.createElement('p'); 
     popupText.innerText = `Tiempo de Juego: ${tiempo}`; 
 
@@ -20,3 +26,4 @@ export function popup(tiempo) {
     popup.appendChild(restartButton)
     main.appendChild(popup)
 }
+
