@@ -6,6 +6,7 @@ import { bestTime } from './utils/timeScore';
 
 const startButton = document.getElementById('start'); 
 const resetButton = document.getElementById('reset');
+resetButton.disabled = true; 
 const boardSize = document.getElementById('board-size'); 
 const difficult = document.getElementById('difficult')
 const time = document.getElementById('time'); 
@@ -75,6 +76,7 @@ startButton.addEventListener('click', e => {
 
     startButton.disabled = true; 
     boardSize.disabled = true; 
+    resetButton.disabled = false; 
 })
 
 resetButton.addEventListener('click', (e) => {

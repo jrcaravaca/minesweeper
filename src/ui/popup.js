@@ -27,7 +27,7 @@ export function popup(tiempo, size, winner = false) {
 
     const restartButton = document.createElement('button');
     restartButton.classList.add('rounded-ml-2', 'bg-gray-700','rounded', 'p-1')
-    restartButton.innerText = 'Reiniciar'; 
+    restartButton.innerText = 'Restart'; 
     restartButton.addEventListener('click', (e) => {
         //pendiente de ver si mejoro esto para que se reinicie con un tablero creado directamente
         e.preventDefault(); 
