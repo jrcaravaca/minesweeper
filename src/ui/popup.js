@@ -17,6 +17,7 @@ export function popup(tiempo, size, winner = false) {
 
     const bestTime = document.createElement('p'); 
     let storageTime = localStorage.getItem(size)
+    debugger;
     
     if (storageTime === null) {
         bestTime.innerText = `Mejor tiempo: -`
@@ -31,9 +32,7 @@ export function popup(tiempo, size, winner = false) {
     restartButton.addEventListener('click', (e) => {
         //pendiente de ver si mejoro esto para que se reinicie con un tablero creado directamente
         e.preventDefault(); 
-        board.reset(); 
-        timer.stop();
-        main.removeChild(popup); 
+        location.reload(); 
     }) 
 
     popup.appendChild(popuptitle)

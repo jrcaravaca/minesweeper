@@ -17,8 +17,9 @@ export let board;
 
 startButton.addEventListener('click', e => {
     let size = boardSize.value; 
+    let gameDifficulty = difficult.value;  
     e.preventDefault(); 
-    board = new Board(size);
+    board = new Board(size, gameDifficulty);
     board.generar()
     timer.start(); 
     
@@ -43,14 +44,14 @@ startButton.addEventListener('click', e => {
                     if (board.checkWin()) {
                         popup(time.innerText,size,true)
                         timer.pause()
-                        bestTime(size, time.innerText)
+                        bestTime((size+gameDifficulty), time.innerText)
                     }
                 }
                 board.revealEmptyNeighbors(cell)
                 if (board.checkWin()) {
                     popup(time.innerText, size,true); 
                     timer.pause()
-                    bestTime(size, time.innerText)
+                    bestTime((size+gameDifficulty), time.innerText)
                 }
             } else {
                 if (cell.reveal()) {
@@ -58,7 +59,7 @@ startButton.addEventListener('click', e => {
                     if (board.checkWin()) {
                         popup(time.innerText, size, true)
                         timer.pause()
-                        bestTime(size, time.innerText)
+                        bestTime((size+gameDifficulty), time.innerText)
                     }
                 }
                 

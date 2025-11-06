@@ -2,11 +2,12 @@ import { shuffle } from "../utils/shuffle";
 import { Cell } from "./Cell";
 
 export class Board {
-    constructor(size) {
+    constructor(size, difficult) {
         this.size = size; 
+        this.difficult = difficult; 
         this.cells = []; 
         this.element = document.getElementById('board'); 
-        this.maxMines = Math.round((this.size * this.size) * 0.15); 
+        this.maxMines = this.gameDifficulty()
         this.isGameOver = false; 
         this.filaRelativa = [-1,-1,-1,0,0,1,1,1];
         this.colRelativa = [-1,0,1,-1,1,-1,0,1]; 
@@ -113,5 +114,15 @@ export class Board {
     
     reset() {
         this.element.innerText = "";
+    }
+
+    gameDifficulty() {
+        if (this.difficult === 'easy') {
+            return Math.round((this.size * this.size) * 0.15); 
+        } else if (this.difficult === 'medium') {
+            return Math.round((this.size * this.size) * 0.25); 
+        } else if (this.difficult === 'hard') {
+            return Math.round((this.size * this.size) * 0.30); 
+        }
     }
 }; 

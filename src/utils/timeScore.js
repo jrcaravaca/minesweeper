@@ -5,7 +5,7 @@ export function bestTime(key, value) {
     if (!bestTime) {
         localStorage.setItem(key, value); 
     } else {
-        if (toSeconds(value) < toSeconds(bestTime)) {
+        if (toSeconds(value) < toSeconds(bestTime.time)) {
             localStorage.setItem(key, value);
         }
     }
