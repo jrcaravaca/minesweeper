@@ -29,7 +29,7 @@ button.addEventListener('click', e => {
             if (cell.hasMine) {
                 board.revealAllMines(); 
                 setTimeout(() => {
-                    popup(time.innerText)
+                    popup(time.innerText,size)
                     timer.pause();
                 }, 500); 
                 board.isGameOver = true; 
@@ -37,14 +37,14 @@ button.addEventListener('click', e => {
                 if (cell.reveal()) {
                     board.revealedCount +=1; 
                     if (board.checkWin()) {
-                        popup(time.innerText, true, size)
+                        popup(time.innerText,size,true)
                         timer.pause()
                         bestTime(size, time.innerText)
                     }
                 }
                 board.revealEmptyNeighbors(cell)
                 if (board.checkWin()) {
-                    popup(time.innerText, true, size); 
+                    popup(time.innerText, size,true); 
                     timer.pause()
                     bestTime(size, time.innerText)
                 }
@@ -52,7 +52,7 @@ button.addEventListener('click', e => {
                 if (cell.reveal()) {
                     board.revealedCount += 1
                     if (board.checkWin()) {
-                        popup(time.innerText, true, size)
+                        popup(time.innerText, size, true)
                         timer.pause()
                         bestTime(size, time.innerText)
                     }
