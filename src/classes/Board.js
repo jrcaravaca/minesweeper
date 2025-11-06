@@ -110,4 +110,8 @@ export class Board {
             return this.isGameOver
         }
     }
+    
+    reset() {
+        this.element.innerText = "";
+    }
 }; 

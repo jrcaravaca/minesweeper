@@ -37,7 +37,9 @@ export class Timer {
         this.seconds = 0; 
         this.mins = 0; 
         this.hours = 0; 
+        this.paintTimer(); 
     }
+
 
     paintTimer() {
         let h = String(this.hours).padStart(2, '0'); 

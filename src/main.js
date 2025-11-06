@@ -4,17 +4,20 @@ import { Timer } from './classes/Timer';
 import { popup } from './ui/popup';
 import { bestTime } from './utils/timeScore';
 
-const button = document.querySelector('button'); 
-const select = document.getElementById('board-size'); 
+const startButton = document.getElementById('start'); 
+const resetButton = document.getElementById('reset');
+const boardSize = document.getElementById('board-size'); 
+const difficult = document.getElementById('difficult')
 const time = document.getElementById('time'); 
 const timer = new Timer(time); 
+let board; 
 
 
 
-button.addEventListener('click', e => {
-    let size = select.value; 
+startButton.addEventListener('click', e => {
+    let size = boardSize.value; 
     e.preventDefault(); 
-    const board = new Board(size);
+    board = new Board(size);
     board.generar()
     timer.start(); 
     
@@ -70,7 +73,14 @@ button.addEventListener('click', e => {
 
     })
 
-    button.disabled = true; 
-    select.disabled = true; 
+    startButton.disabled = true; 
+    boardSize.disabled = true; 
 })
 
+resetButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    timer.stop(); 
+    board.reset()
+    startButton.disabled = false; 
+    boardSize.disabled = false; 
+})
