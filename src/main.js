@@ -9,8 +9,8 @@ const resetButton = document.getElementById('reset');
 const boardSize = document.getElementById('board-size'); 
 const difficult = document.getElementById('difficult')
 const time = document.getElementById('time'); 
-const timer = new Timer(time); 
-let board; 
+export const timer = new Timer(time); 
+export let board; 
 
 
 
@@ -83,4 +83,5 @@ resetButton.addEventListener('click', (e) => {
     board.reset()
     startButton.disabled = false; 
     boardSize.disabled = false; 
-})
+});
+

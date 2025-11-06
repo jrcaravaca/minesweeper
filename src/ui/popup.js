@@ -1,3 +1,5 @@
+import { board, timer } from "../main";
+
 export function popup(tiempo, size, winner = false) {
     const main = document.querySelector('main'); 
     const popup = document.createElement('div'); 
@@ -29,8 +31,11 @@ export function popup(tiempo, size, winner = false) {
     restartButton.addEventListener('click', (e) => {
         //pendiente de ver si mejoro esto para que se reinicie con un tablero creado directamente
         e.preventDefault(); 
-        location.reload()
+        board.reset(); 
+        timer.stop();
+        main.removeChild(popup); 
     }) 
+
     popup.appendChild(popuptitle)
     popup.appendChild(popupText)
     popup.appendChild(bestTime)
