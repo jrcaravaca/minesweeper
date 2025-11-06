@@ -69,5 +69,8 @@ button.addEventListener('click', e => {
         })
 
     })
+
+    button.disabled = true; 
+    select.disabled = true; 
 })
 
