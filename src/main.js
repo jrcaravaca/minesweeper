@@ -20,7 +20,12 @@ startButton.addEventListener('click', e => {
     let gameDifficulty = difficult.value;  
     e.preventDefault(); 
     board = new Board(size, gameDifficulty);
-    board.generar()
+    if (window.innerWidth < 800 && size >= 32) {
+        const table = document.getElementById('board'); 
+        table.innerText = 'Ese tamaño de tablero solo está disponible en pantallas grandes'
+    } else {
+        board.generar(); 
+    }
     timer.start(); 
     
     
@@ -34,8 +39,9 @@ startButton.addEventListener('click', e => {
             if (cell.hasMine) {
                 board.revealAllMines(); 
                 setTimeout(() => {
-                    popup(time.innerText,size)
+                    popup(time.innerText,(size + gameDifficulty))
                     timer.pause();
+                    resetButton.disabled = true; 
                 }, 500); 
                 board.isGameOver = true; 
             } else if (cell.adjacentMines === 0) {
