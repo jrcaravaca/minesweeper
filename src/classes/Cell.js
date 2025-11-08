@@ -1,4 +1,5 @@
 export class Cell {
+    //Clase celda, donde cada celda es responsable de sí misma. Sirve para tener controlado, la revelación de cada celda, si tiene mina o no y para ponder banderas. 
     constructor() {
         this.element = document.createElement('div'); 
         this.hasMine = false; 

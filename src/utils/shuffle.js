@@ -13,3 +13,5 @@ export function shuffle(array) {
       array[randomIndex], array[currentIndex]];
   }
 }
+
+// Esta función shuffle la buscamos en los ejercicios de clase y la he reutilizado aquí

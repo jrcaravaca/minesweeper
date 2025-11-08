@@ -7,24 +7,26 @@
     <title>MineSweeper</title>
   </head>
   <body class=" bg-gray-700 lg:h-full flex flex-col m-w-[600px]">
-    <div class="page  m-4 text-white">
+    <!-- CONTENDEDOR PRINCIPAL -->
+    <div class="page  m-4 text-white"> 
 
+      <!-- HEADER -->
       <header class="text-2xl lg:text-6xl text-center mb-4">
         <h1>MineSweeper</h1>
       </header>
 
+      <!-- MAIN -->
       <main class="lg:flex lg:flex-col lg:items-center lg:justify-center">
+        <!-- FORMULARIO PARA CONFIGURAR TABLERO -->
         <form action="#" class="flex flex-wrap items-center justify-center  gap-4 lg:gap-2">
           <label for="board-size">Board Size</label>
           <select name="board-size" id="board-size" class="bg-gray-700 border rounded">
-            <!-- <option value="-">-</option> -->
             <option value="8">8</option>
             <option value="16">16</option>
             <option value="32">32</option>
           </select>
           <label for="difficult">Difficult</label>
           <select name="difficult" id="difficult" class="bg-gray-700 border rounded">
-            <!-- <option value="-">-</option> -->
             <option value="easy">Easy</option>
             <option value="medium">Medium</option>
             <option value="hard">Hard</option>
@@ -32,13 +34,17 @@
           <button class="cursor-pointer bg-gray-800 text-white px-2 py-1 rounded ml-2" id="start">Start</button>
           <button class="cursor-pointer bg-gray-800 text-white px-2 py-1 rounded ml-2" id="reset">Restart</button>
         </form>
+        <!-- CONTENEDOR PARA EL TIMER Y EL TABLERO -->
         <section id="container" class="mt-6">
+          <!-- TIMER -->
           <div class="flex items-center justify-center">
               <p id="time">00:00:00</p>
           </div>
+          <!-- TABLERO -->
           <div id="board" class="grid gap-o.5 aspect-square lg:w-[780px] bg-gray-700 text-sm text-center"></div>
         </section>
       </main>
+      <!-- FOOTER -->
       <footer class="fixed bottom-0 left-0 w-full text-center text-white py-4">
         <p>Coded before sunrise, powered by coffee, by @jrcaravaca</p>
       </footer>

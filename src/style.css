@@ -1,5 +1,9 @@
 @import "tailwindcss"; 
 
+/* Los estilos, están hechos con Tailwind, framework que me encanta desde que aprendí a usarlo, pero en esta ocasión
+para no saturar mis clases y mi lógica añadiendo clases, he creado estas clases personalizadas. Simplemente
+se añade una clase y ya lleva todos los estilos, como hariamos usando CSS normal */
+
 /* Aquí estan mis clases personalizadas  */
 
 .cell {
@@ -14,7 +18,7 @@
 }
 
 .mine.revealed{
-    background-image: url("./mine-icon.svg");
+    background-image: url("/mine-icon.svg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -25,7 +29,7 @@
 }
 
 .flag {
-    background-image: url("./flag.svg");
+    background-image: url("/flag.svg");
     background-position: center;
     background-size: contain;
 }

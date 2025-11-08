@@ -1,4 +1,5 @@
 export class Timer {
+    // Este timer es la evolución de una función que desarrollé en un proyecto personal, espero que me sea útil de cara al futuro y poder reutilizarla
     constructor(element) {
         this.seconds = 0; 
         this.mins = 0; 
